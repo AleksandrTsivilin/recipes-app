@@ -3,6 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { mealInfoCollection } from "@/data";
 import { ALL_RECIPES } from "@/constants/queryKeys";
+import { useSession } from "next-auth/react";
 
 function wait(delay: number) {
     return new Promise(resolve => {
@@ -23,8 +24,9 @@ export const RecipeList = () => {
         queryKey: [ALL_RECIPES],
         queryFn: () => getRecipes(),
       });
-
-    console.log('recipes', data)
+    const session = useSession();
+    console.log('session in recipeList', session)
+    // console.log('recipes', data)
     if (isLoading) {
       return (
         <p className="bg-green-500 p-2 text-center">loading...</p>
@@ -32,6 +34,7 @@ export const RecipeList = () => {
     }
     return (
         <>
+            <div className="bg-red-500">fjsadkjds</div>
             <p>RecipeList</p>
             {data && (
               <ul>

@@ -4,6 +4,7 @@ import { dehydrate } from "@tanstack/query-core";
 import Hydrate from "@/utils/hydrate.client";
 import { mealInfoCollection } from "@/data";
 import { ALL_RECIPES } from "@/constants/queryKeys";
+import { Navigation } from "./components/Navigation";
 
 
 function wait(delay: number) {
@@ -27,6 +28,7 @@ export default async function Home() {
   
   return (
     <main>
+      <Navigation />
       <p>Home page</p>
       <Hydrate state={dehydratedState}>
         <RecipeList />
